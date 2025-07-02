@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PedigreeKing - Pigeon Pedigree & Management System</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom animation for the floating pigeon image */
@@ -31,12 +30,82 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Styles for the modal dialog */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black w/ opacity */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h2 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #87d7e6;
+        }
+
+        .modal-content p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content button {
+            background-color: #87d7e6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: #6ac1cd;
+        }
     </style>
 </head>
 
 <body class="min-h-screen bg-white font-sans text-gray-800">
 
-    <!-- Header -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <h2>👋 Welcome to PedigreeKing!</h2>
+            <p>Everything here from color and design is just a POC and will he improved a lot further. Click 'OK' to
+                proceed!</p>
+            <button id="modalOkButton">OK</button>
+        </div>
+    </div>
+
     <header
         class="bg-white shadow-sm py-4 px-6 md:px-12 flex justify-between items-center fixed w-full z-10 top-0 rounded-b-lg">
         <div class="flex items-center space-x-2">
@@ -59,7 +128,6 @@
                 class="px-6 py-2 rounded-full bg-[#87d7e6] text-white font-semibold shadow-md hover:bg-[#6ac1cd] transition-colors">
                 Sign Up
             </a>
-            <!-- Mobile Menu Button (Hamburger) -->
             <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +138,6 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation Menu (Hidden by default) -->
     <nav id="mobile-menu" class="hidden md:hidden bg-white shadow-lg fixed top-16 w-full z-20 rounded-b-lg py-4">
         <ul class="flex flex-col items-center space-y-4 text-gray-700 font-medium">
             <li><a href="#home" class="block py-2 hover:text-[#87d7e6] transition-colors">Home</a></li>
@@ -87,12 +154,10 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home"
         class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-green-400 to-yellow-300 text-white overflow-hidden rounded-b-3xl shadow-xl">
         <div
             class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between z-0 relative">
-            <!-- Text Content -->
             <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
                     Your Birds, Your Pedigrees, <br class="hidden md:block" />The Best Pedigree Software Available.
@@ -107,19 +172,16 @@
                 </button>
             </div>
 
-            <!-- Image Placeholder -->
             <div class="md:w-1/2 flex justify-center relative">
                 <img src="https://placehold.co/500x350/ffffff/000000?text=Pigeon+Management+Dashboard"
                     alt="Pigeon Management Dashboard"
                     class="w-full max-w-lg rounded-lg shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500" />
-                <!-- Small decorative pigeon image -->
                 <img src="https://placehold.co/100x100/87d7e6/ffffff?text=🕊️" alt="Flying Pigeon"
                     class="absolute top-0 right-0 md:-top-10 md:right-10 w-24 h-24 transform rotate-12 animate-float" />
             </div>
         </div>
     </section>
 
-    <!-- Why you should use this section -->
     <section class="py-16 md:py-24 bg-gray-900 text-white rounded-t-3xl shadow-inner -mt-8 relative z-0">
         <div class="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between">
             <div class="lg:w-1/3 text-center lg:text-left mb-12 lg:mb-0">
@@ -130,7 +192,6 @@
                 </p>
             </div>
             <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature Card 1 -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
                     <div class="text-[#87d7e6] mb-4">
@@ -146,7 +207,6 @@
                         behind a screen and more with your birds.
                     </p>
                 </div>
-                <!-- Feature Card 2 -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
                     <div class="text-[#87d7e6] mb-4">
@@ -163,7 +223,6 @@
                         records are always safe.
                     </p>
                 </div>
-                <!-- Feature Card 3 -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
                     <div class="text-[#87d7e6] mb-4">
@@ -180,21 +239,19 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="text-center mt-16">
-            <button
-                class="px-8 py-4 bg-green-600 text-white font-bold rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-105">
-                Discover Our Incredible Features
-            </button>
+            <div class="text-center mt-16">
+                <button
+                    class="px-8 py-4 bg-green-600 text-white font-bold rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-105">
+                    Discover Our Incredible Features
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- Quick Feature Highlight Section -->
     <section id="features" class="py-16 md:py-24 bg-white text-gray-800">
         <div class="container mx-auto px-6 md:px-12 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12">Everything a pigeon breeder needs. In one place.</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
-                <!-- Feature Card 1 -->
                 <div
                     class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div class="text-[#87d7e6] mb-4">
@@ -206,7 +263,6 @@
                     </div>
                     <h3 class="text-xl font-semibold">Add & Manage Pigeons</h3>
                 </div>
-                <!-- Feature Card 2 -->
                 <div
                     class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div class="text-[#87d7e6] mb-4">
@@ -219,7 +275,6 @@
                     </div>
                     <h3 class="text-xl font-semibold">Automatic Pedigree Generator (OCR)</h3>
                 </div>
-                <!-- Feature Card 3 -->
                 <div
                     class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div class="text-[#87d7e6] mb-4">
@@ -232,7 +287,6 @@
                     </div>
                     <h3 class="text-xl font-semibold">Race Result Tracking</h3>
                 </div>
-                <!-- Feature Card 4 -->
                 <div
                     class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div class="text-[#87d7e6] mb-4">
@@ -245,7 +299,6 @@
                     </div>
                     <h3 class="text-xl font-semibold">Smart Breeding & Pairing</h3>
                 </div>
-                <!-- Feature Card 5 -->
                 <div
                     class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div class="text-[#87d7e6] mb-4">
@@ -257,7 +310,6 @@
                     </div>
                     <h3 class="text-xl font-semibold">Transfer & Sell Easily</h3>
                 </div>
-                <!-- Feature Card 6 -->
                 <div
                     class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div class="text-[#87d7e6] mb-4">
@@ -274,12 +326,10 @@
         </div>
     </section>
 
-    <!-- Plans & Pricing Preview -->
     <section id="pricing" class="py-16 md:py-24 bg-gray-900 text-white rounded-t-3xl shadow-inner relative z-0">
         <div class="container mx-auto px-6 md:px-12 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12">Plans for Every Type of Breeder</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Plan Card 1: Trial -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-[#87d7e6] transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-2xl font-bold mb-4 text-[#87d7e6]">🟢 Free Trial</h3>
@@ -299,7 +349,6 @@
                     </button>
                 </div>
 
-                <!-- Plan Card 2: Hobby Breeder -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-transparent transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-2xl font-bold mb-4 text-purple-400">🔹 Hobby Breeder</h3>
@@ -319,7 +368,6 @@
                     </button>
                 </div>
 
-                <!-- Plan Card 3: Champion Loft -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-transparent transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-2xl font-bold mb-4 text-blue-400">🔵 Champion Loft</h3>
@@ -340,7 +388,6 @@
                     </button>
                 </div>
 
-                <!-- Plan Card 4: Custom Loft -->
                 <div
                     class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-transparent transform hover:scale-105 transition-transform duration-300">
                     <h3 class="text-2xl font-bold mb-4 text-red-400">🔴 Custom Loft</h3>
@@ -380,11 +427,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-950 text-gray-400 py-12 rounded-t-3xl shadow-inner">
         <div
             class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center md:text-left">
-            <!-- Brand Info -->
             <div class="col-span-1 md:col-span-2 lg:col-span-1">
                 <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
                     <img src="https://placehold.co/40x40/87d7e6/ffffff?text=🕊️" alt="Logo" class="rounded-full" />
@@ -395,7 +440,6 @@
                 </p>
             </div>
 
-            <!-- Navigation Links -->
             <div>
                 <h4 class="font-bold text-white mb-4">Navigation</h4>
                 <ul class="space-y-2 text-sm">
@@ -406,7 +450,6 @@
                 </ul>
             </div>
 
-            <!-- Legal Links -->
             <div>
                 <h4 class="font-bold text-white mb-4">Legal</h4>
                 <ul class="space-y-2 text-sm">
@@ -416,7 +459,6 @@
                 </ul>
             </div>
 
-            <!-- Contact & Socials -->
             <div id="contact" class="col-span-1 md:col-span-3 lg:col-span-1">
                 <h4 class="font-bold text-white mb-4">Contact Us</h4>
                 <p class="text-sm mb-4">
@@ -425,7 +467,6 @@
                 <a href="mailto:support@pedigreeking.com"
                     class="text-[#87d7e6] hover:underline">support@pedigreeking.com</a>
                 <div class="flex justify-center md:justify-start space-x-4 mt-4">
-                    <!-- Social Icons - Placeholder -->
                     <a href="#" class="text-gray-400 hover:text-[#87d7e6] transition-colors">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd"
@@ -449,11 +490,13 @@
     </footer>
 
     <script>
-        // JavaScript for mobile menu toggle and current year in footer
+        // JavaScript for mobile menu toggle, current year in footer, and modal dialog
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const currentYearSpan = document.getElementById('current-year');
+            const welcomeModal = document.getElementById('welcomeModal');
+            const modalOkButton = document.getElementById('modalOkButton');
 
             // Toggle mobile menu visibility
             mobileMenuButton.addEventListener('click', function () {
@@ -469,6 +512,14 @@
 
             // Set current year in footer
             currentYearSpan.textContent = new Date().getFullYear();
+
+            // Show the modal dialog on page load
+            welcomeModal.style.display = 'flex'; // Use flex to center the content
+
+            // Close the modal when the OK button is clicked
+            modalOkButton.addEventListener('click', function () {
+                welcomeModal.style.display = 'none';
+            });
         });
     </script>
 </body>
