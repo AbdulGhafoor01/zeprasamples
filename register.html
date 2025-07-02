@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PedigreeKing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles if needed, but Tailwind should handle most */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <div class="flex flex-col items-center mb-8">
+            <img src="https://placehold.co/60x60/87d7e6/ffffff?text=🕊️" alt="Logo" class="rounded-full mb-4" />
+            <h2 class="text-3xl font-bold text-gray-800">Create Your Account</h2>
+            <p class="text-gray-600 mt-2">Join PedigreeKing and start managing your pigeons!</p>
+        </div>
+
+        <form id="register-form">
+            <div class="mb-5">
+                <label for="first_name" class="block text-gray-700 text-sm font-semibold mb-2">First Name</label>
+                <input type="text" id="first_name" name="first_name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="John" required />
+            </div>
+            <div class="mb-5">
+                <label for="last_name" class="block text-gray-700 text-sm font-semibold mb-2">Last Name</label>
+                <input type="text" id="last_name" name="last_name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="Doe" required />
+            </div>
+            <div class="mb-5">
+                <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email Address</label>
+                <input type="email" id="email" name="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="you@example.com" required />
+            </div>
+            <div class="mb-5">
+                <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+                <input type="password" id="password" name="password"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="••••••••" required />
+            </div>
+            <div class="mb-6">
+                <label for="confirm_password" class="block text-gray-700 text-sm font-semibold mb-2">Confirm
+                    Password</label>
+                <input type="password" id="confirm_password" name="confirm_password"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="••••••••" required />
+            </div>
+            <button type="submit"
+                class="w-full bg-[#87d7e6] text-white py-3 rounded-full font-semibold shadow-md hover:bg-[#6ac1cd] transition-colors">
+                Register
+            </button>
+        </form>
+
+        <p class="text-center text-gray-600 text-sm mt-6">
+            Already have an account?
+            <a href="login.html" class="text-[#87d7e6] hover:underline font-semibold">Login</a>
+        </p>
+        <p class="text-center text-gray-600 text-sm mt-3">
+            <a href="index.html" class="text-gray-500 hover:underline">← Back to Home</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+            // In a real application, you would send registration data to a server here.
+            // For now, we simulate success and redirect to the dashboard.
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+
+</html>

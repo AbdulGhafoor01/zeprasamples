@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PedigreeKing - Pigeon Pedigree & Management System</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom animation for the floating pigeon image */
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(12deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(15deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(12deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Ensure smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-white font-sans text-gray-800">
+
+    <!-- Header -->
+    <header
+        class="bg-white shadow-sm py-4 px-6 md:px-12 flex justify-between items-center fixed w-full z-10 top-0 rounded-b-lg">
+        <div class="flex items-center space-x-2">
+            <img src="https://placehold.co/40x40/87d7e6/ffffff?text=🕊️" alt="Logo" class="rounded-full" />
+            <span class="text-xl font-bold text-[#87d7e6]">PedigreeKing</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
+            <a href="#home" class="hover:text-[#87d7e6] transition-colors">Home</a>
+            <a href="#features" class="hover:text-[#87d7e6] transition-colors">Features</a>
+            <a href="#pricing" class="hover:text-[#87d7e6] transition-colors">Pricing</a>
+            <a href="#about" class="hover:text-[#87d7e6] transition-colors">About</a>
+            <a href="#contact" class="hover:text-[#87d7e6] transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <a href="login.html"
+                class="hidden md:block px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors">
+                Login
+            </a>
+            <a href="register.html"
+                class="px-6 py-2 rounded-full bg-[#87d7e6] text-white font-semibold shadow-md hover:bg-[#6ac1cd] transition-colors">
+                Sign Up
+            </a>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu (Hidden by default) -->
+    <nav id="mobile-menu" class="hidden md:hidden bg-white shadow-lg fixed top-16 w-full z-20 rounded-b-lg py-4">
+        <ul class="flex flex-col items-center space-y-4 text-gray-700 font-medium">
+            <li><a href="#home" class="block py-2 hover:text-[#87d7e6] transition-colors">Home</a></li>
+            <li><a href="#features" class="block py-2 hover:text-[#87d7e6] transition-colors">Features</a></li>
+            <li><a href="#pricing" class="block py-2 hover:text-[#87d7e6] transition-colors">Pricing</a></li>
+            <li><a href="#about" class="block py-2 hover:text-[#87d7e6] transition-colors">About</a></li>
+            <li><a href="#contact" class="block py-2 hover:text-[#87d7e6] transition-colors">Contact</a></li>
+            <li><a href="login.html"
+                    class="px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-colors w-full text-center">Login</a>
+            </li>
+            <li><a href="register.html"
+                    class="px-6 py-2 rounded-full bg-[#87d7e6] text-white font-semibold shadow-md hover:bg-[#6ac1cd] transition-colors w-full text-center">Sign
+                    Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-green-400 to-yellow-300 text-white overflow-hidden rounded-b-3xl shadow-xl">
+        <div
+            class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between z-0 relative">
+            <!-- Text Content -->
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                    Your Birds, Your Pedigrees, <br class="hidden md:block" />The Best Pedigree Software Available.
+                </h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90">
+                    Manage your pigeons, generate pedigrees, track results, and breed smarter — all in one powerful
+                    platform.
+                </p>
+                <button
+                    class="px-8 py-4 bg-yellow-500 text-white font-bold rounded-full shadow-lg hover:bg-yellow-600 transition-all transform hover:scale-105">
+                    👉 Start Free Trial
+                </button>
+            </div>
+
+            <!-- Image Placeholder -->
+            <div class="md:w-1/2 flex justify-center relative">
+                <img src="https://placehold.co/500x350/ffffff/000000?text=Pigeon+Management+Dashboard"
+                    alt="Pigeon Management Dashboard"
+                    class="w-full max-w-lg rounded-lg shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500" />
+                <!-- Small decorative pigeon image -->
+                <img src="https://placehold.co/100x100/87d7e6/ffffff?text=🕊️" alt="Flying Pigeon"
+                    class="absolute top-0 right-0 md:-top-10 md:right-10 w-24 h-24 transform rotate-12 animate-float" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Why you should use this section -->
+    <section class="py-16 md:py-24 bg-gray-900 text-white rounded-t-3xl shadow-inner -mt-8 relative z-0">
+        <div class="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between">
+            <div class="lg:w-1/3 text-center lg:text-left mb-12 lg:mb-0">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">A solution designed to save you time</h2>
+                <p class="text-lg opacity-80">
+                    The ultimate pigeon management system has been designed to save you time, reduce manual work, and
+                    help you focus on your pigeons and not paperwork.
+                </p>
+            </div>
+            <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12 mx-auto lg:mx-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-center lg:text-left">Time-saving</h3>
+                    <p class="text-gray-400 text-center lg:text-left">
+                        Instant pedigrees, automated record-keeping, and streamlined workflows mean you spend less time
+                        behind a screen and more with your birds.
+                    </p>
+                </div>
+                <!-- Feature Card 2 -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12 mx-auto lg:mx-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.007 12.007 0 002.944 12c0 2.899 1.19 5.516 3.056 7.356A11.955 11.955 0 0112 21.056a11.955 11.955 0 018.618-3.04A12.007 12.007 0 0021.056 12c0-2.899-1.19-5.516-3.056-7.356z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-center lg:text-left">Security</h3>
+                    <p class="text-gray-400 text-center lg:text-left">
+                        Your data is protected with industry-standard security measures, ensuring your valuable pigeon
+                        records are always safe.
+                    </p>
+                </div>
+                <!-- Feature Card 3 -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12 mx-auto lg:mx-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-center lg:text-left">Future</h3>
+                    <p class="text-gray-400 text-center lg:text-left">
+                        Invest in a platform that evolves with your needs, with regular updates and new features
+                        inspired by breeders like you.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-16">
+            <button
+                class="px-8 py-4 bg-green-600 text-white font-bold rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-105">
+                Discover Our Incredible Features
+            </button>
+        </div>
+    </section>
+
+    <!-- Quick Feature Highlight Section -->
+    <section id="features" class="py-16 md:py-24 bg-white text-gray-800">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Everything a pigeon breeder needs. In one place.</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
+                <!-- Feature Card 1 -->
+                <div
+                    class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold">Add & Manage Pigeons</h3>
+                </div>
+                <!-- Feature Card 2 -->
+                <div
+                    class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold">Automatic Pedigree Generator (OCR)</h3>
+                </div>
+                <!-- Feature Card 3 -->
+                <div
+                    class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold">Race Result Tracking</h3>
+                </div>
+                <!-- Feature Card 4 -->
+                <div
+                    class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold">Smart Breeding & Pairing</h3>
+                </div>
+                <!-- Feature Card 5 -->
+                <div
+                    class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold">Transfer & Sell Easily</h3>
+                </div>
+                <!-- Feature Card 6 -->
+                <div
+                    class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-[#87d7e6] mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold">Export to PDF & Share Pedigrees</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans & Pricing Preview -->
+    <section id="pricing" class="py-16 md:py-24 bg-gray-900 text-white rounded-t-3xl shadow-inner relative z-0">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Plans for Every Type of Breeder</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Plan Card 1: Trial -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-[#87d7e6] transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-[#87d7e6]">🟢 Free Trial</h3>
+                    <p class="text-4xl font-extrabold mb-6">€0<span class="text-xl font-medium"> / 7-day trial</span>
+                    </p>
+                    <ul class="text-gray-300 text-left space-y-2 mb-8">
+                        <li>✅ 5 Pigeons Allowed</li>
+                        <li>✅ 1 Test Pedigree</li>
+                        <li>✅ Manual Pedigree Builder</li>
+                        <li>✅ OCR Pedigree Reader</li>
+                        <li>✅ Drag-and-Drop Editor</li>
+                        <li>✅ Export to PDF</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 bg-[#87d7e6] text-white font-semibold rounded-full shadow-md hover:bg-[#6ac1cd] transition-colors">
+                        Start Trial
+                    </button>
+                </div>
+
+                <!-- Plan Card 2: Hobby Breeder -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-transparent transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-400">🔹 Hobby Breeder</h3>
+                    <p class="text-4xl font-extrabold mb-6">€8,99<span class="text-xl font-medium"> / month</span></p>
+                    <ul class="text-gray-300 text-left space-y-2 mb-8">
+                        <li>✅ 100 Pigeons Allowed</li>
+                        <li>✅ 15 Pedigrees per Month</li>
+                        <li>✅ Manual Pedigree Builder</li>
+                        <li>✅ OCR Pedigree Reader</li>
+                        <li>✅ Drag-and-Drop Editor</li>
+                        <li>✅ Export to PDF</li>
+                        <li>❌ Share Pedigree via Link</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 bg-purple-600 text-white font-semibold rounded-full shadow-md hover:bg-purple-700 transition-colors">
+                        Choose Plan
+                    </button>
+                </div>
+
+                <!-- Plan Card 3: Champion Loft -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-transparent transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">🔵 Champion Loft</h3>
+                    <p class="text-4xl font-extrabold mb-6">€18,99<span class="text-xl font-medium"> / month</span></p>
+                    <ul class="text-gray-300 text-left space-y-2 mb-8">
+                        <li>✅ 300 Pigeons Allowed</li>
+                        <li>✅ 30 Pedigrees per Month</li>
+                        <li>✅ Manual Pedigree Builder</li>
+                        <li>✅ OCR Pedigree Reader</li>
+                        <li>✅ Drag-and-Drop Editor (with own logo)</li>
+                        <li>✅ Export to PDF</li>
+                        <li>✅ Share Pedigree via Link</li>
+                        <li>✅ Email Pedigree to Others</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 transition-colors">
+                        Choose Plan
+                    </button>
+                </div>
+
+                <!-- Plan Card 4: Custom Loft -->
+                <div
+                    class="bg-gray-800 p-8 rounded-xl shadow-lg border-2 border-transparent transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-red-400">🔴 Custom Loft</h3>
+                    <p class="text-4xl font-extrabold mb-6">Custom<span class="text-xl font-medium"> / per month</span>
+                    </p>
+                    <ul class="text-gray-300 text-left space-y-2 mb-8">
+                        <li>✅ Custom Pigeons Allowed</li>
+                        <li>✅ Custom Pedigrees per Month</li>
+                        <li>✅ Manual Pedigree Builder</li>
+                        <li>✅ OCR Pedigree Reader (Priority)</li>
+                        <li>✅ Drag-and-Drop Editor (with own logo)</li>
+                        <li>✅ Export to PDF</li>
+                        <li>✅ Share Pedigree via Link</li>
+                        <li>✅ Email Pedigree to Others</li>
+                        <li>✅ Pedigree Transfer to Other Users</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-red-700 transition-colors">
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+            <div class="mt-12 text-lg opacity-90">
+                <p>
+                    Getting started is easy and stopping is just as simple. Once you’re done using the platform, you can
+                    <span class="font-bold text-[#87d7e6]">cancel your subscription anytime</span> with just one click.
+                </p>
+                <p class="mt-2">
+                    Just go to the top of your dashboard, hit “Cancel Subscription”, and you're free. No fuss. No
+                    commitment. Just full control.
+                </p>
+            </div>
+            <button
+                class="mt-12 px-8 py-4 bg-green-600 text-white font-bold rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-105">
+                View Full Plans / Compare Subscriptions
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-12 rounded-t-3xl shadow-inner">
+        <div
+            class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center md:text-left">
+            <!-- Brand Info -->
+            <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                    <img src="https://placehold.co/40x40/87d7e6/ffffff?text=🕊️" alt="Logo" class="rounded-full" />
+                    <span class="text-xl font-bold text-[#87d7e6]">PedigreeKing</span>
+                </div>
+                <p class="text-sm">
+                    The ultimate platform for pigeon breeders to manage their loft efficiently.
+                </p>
+            </div>
+
+            <!-- Navigation Links -->
+            <div>
+                <h4 class="font-bold text-white mb-4">Navigation</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-[#87d7e6] transition-colors">Home</a></li>
+                    <li><a href="#features" class="hover:text-[#87d7e6] transition-colors">Features</a></li>
+                    <li><a href="#pricing" class="hover:text-[#87d7e6] transition-colors">Pricing</a></li>
+                    <li><a href="#about" class="hover:text-[#87d7e6] transition-colors">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal Links -->
+            <div>
+                <h4 class="font-bold text-white mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-[#87d7e6] transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-[#87d7e6] transition-colors">Privacy Policy</a></li>
+                    <li><a href="login.html" class="hover:text-[#87d7e6] transition-colors">Login</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Socials -->
+            <div id="contact" class="col-span-1 md:col-span-3 lg:col-span-1">
+                <h4 class="font-bold text-white mb-4">Contact Us</h4>
+                <p class="text-sm mb-4">
+                    Have questions? Reach out to us!
+                </p>
+                <a href="mailto:support@pedigreeking.com"
+                    class="text-[#87d7e6] hover:underline">support@pedigreeking.com</a>
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <!-- Social Icons - Placeholder -->
+                    <a href="#" class="text-gray-400 hover:text-[#87d7e6] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C17.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-[#87d7e6] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.007-.532A8.318 8.318 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 014 9.659v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.188a11.644 11.644 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-8">
+            &copy; <span id="current-year"></span> PedigreeKing. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle and current year in footer
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const currentYearSpan = document.getElementById('current-year');
+
+            // Toggle mobile menu visibility
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked (for smooth scrolling)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Set current year in footer
+            currentYearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+
+</html>

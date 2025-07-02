@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PedigreeKing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles if needed, but Tailwind should handle most */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <div class="flex flex-col items-center mb-8">
+            <img src="https://placehold.co/60x60/87d7e6/ffffff?text=🕊️" alt="Logo" class="rounded-full mb-4" />
+            <h2 class="text-3xl font-bold text-gray-800">Welcome Back!</h2>
+            <p class="text-gray-600 mt-2">Sign in to your PedigreeKing account</p>
+        </div>
+
+        <form id="login-form">
+            <div class="mb-5">
+                <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email Address</label>
+                <input type="email" id="email" name="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="you@example.com" required />
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+                <input type="password" id="password" name="password"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87d7e6]"
+                    placeholder="••••••••" required />
+            </div>
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center">
+                    <input type="checkbox" id="remember_me" name="remember_me"
+                        class="h-4 w-4 text-[#87d7e6] rounded border-gray-300 focus:ring-[#87d7e6]" />
+                    <label for="remember_me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+                </div>
+                <a href="#" class="text-sm text-[#87d7e6] hover:underline">Forgot Password?</a>
+            </div>
+            <button type="submit"
+                class="w-full bg-[#87d7e6] text-white py-3 rounded-full font-semibold shadow-md hover:bg-[#6ac1cd] transition-colors">
+                Login
+            </button>
+        </form>
+
+        <p class="text-center text-gray-600 text-sm mt-6">
+            Don't have an account?
+            <a href="register.html" class="text-[#87d7e6] hover:underline font-semibold">Sign Up</a>
+        </p>
+        <p class="text-center text-gray-600 text-sm mt-3">
+            <a href="index.html" class="text-gray-500 hover:underline">← Back to Home</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+            // In a real application, you would send login credentials to a server here.
+            // For now, we simulate success and redirect to the dashboard.
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+
+</html>

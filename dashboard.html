@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PedigreeKing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom scrollbar for sidebar */
+        .sidebar-scroll {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .sidebar-scroll::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="bg-gray-900 text-white w-64 space-y-6 py-7 px-2 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-50 flex flex-col rounded-r-xl shadow-lg sidebar-scroll">
+        <div class="flex items-center justify-between px-4">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/87d7e6/ffffff?text=🕊️" alt="Logo" class="rounded-full" />
+                <span class="text-2xl font-bold text-[#87d7e6]">PedigreeKing</span>
+            </div>
+            <!-- Close button for mobile -->
+            <button id="sidebar-close-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="flex-grow">
+            <a href="dashboard.html"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3 bg-gray-700 text-[#87d7e6]">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.146-1.285-.427-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.146-1.285.427-1.857m0 0a2 2 0 10-3.417-2.357A2 2 0 0010 9.25V9m-3 3h.01M7 12H4m0 0H2">
+                    </path>
+                </svg>
+                <span>Mijn Duiven</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                </svg>
+                <span>Stamboom Generator</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                    </path>
+                </svg>
+                <span>Race Resultaten</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                    </path>
+                </svg>
+                <span>Kweek & Paren</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.007 12.007 0 002.944 12c0 2.899 1.19 5.516 3.056 7.356A11.955 11.955 0 0112 21.056a11.955 11.955 0 018.618-3.04A12.007 12.007 0 0021.056 12c0-2.899-1.19-5.516-3.056-7.356z">
+                    </path>
+                </svg>
+                <span>Gezondheid & Training</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                </svg>
+                <span>Verkoop & Overdracht</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253">
+                    </path>
+                </svg>
+                <span>Pedigrees</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span>Instellingen</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3 text-yellow-400 font-semibold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 11.5V14m0-2.5V7a1.5 1.5 0 013 0v6a3.5 3.5 0 006 0V7a3.5 3.5 0 00-7 0v3.5c0 .66.07 1.303.207 1.922">
+                    </path>
+                </svg>
+                <span>Upgrade Plan</span>
+            </a>
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-gray-700 hover:text-[#87d7e6] flex items-center space-x-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9.247a12.007 12.007 0 00.75 3.124m-1.282-3.124A12.007 12.007 0 006.01 12c0 1.602.398 3.141 1.113 4.516m9.673-4.516A12.007 12.007 0 0118 12c0 1.602-.398 3.141-1.113 4.516m-9.673-4.516c-.495-1.182-.79-2.427-.872-3.683M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                    </path>
+                </svg>
+                <span>Help & FAQ</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto px-4 py-4 border-t border-gray-700">
+            <a href="#"
+                class="block py-2.5 px-4 rounded-lg transition duration-200 hover:bg-red-700 hover:text-white flex items-center space-x-3 text-red-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                    </path>
+                </svg>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col md:ml-64">
+        <!-- Top Bar for Main Content -->
+        <header class="bg-white shadow-sm py-4 px-6 md:px-10 flex justify-between items-center z-40 rounded-bl-lg">
+            <button id="sidebar-open-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-bold text-gray-800 hidden md:block">Dashboard</h1>
+            <div class="flex items-center space-x-4">
+                <!-- Cancel Subscription Button -->
+                <button
+                    class="px-4 py-2 rounded-full bg-red-500 text-white font-semibold shadow-md hover:bg-red-600 transition-colors text-sm">
+                    Cancel Subscription
+                </button>
+                <!-- User Profile Dropdown -->
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none" id="user-menu-button">
+                        <img src="https://placehold.co/40x40/cccccc/000000?text=👤" alt="User Avatar"
+                            class="rounded-full" />
+                        <span class="font-medium text-gray-700 hidden sm:block">Jan Doe</span>
+                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="user-menu"
+                        class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="flex-1 p-6 md:p-10 overflow-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Goedemiddag, Jan! 👋 Welkom terug bij je duivenhok.</h2>
+
+            <!-- Stat Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Total Pigeons</p>
+                        <p class="text-3xl font-bold text-gray-900">125</p>
+                    </div>
+                    <div class="p-3 bg-[#87d7e6] rounded-full text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.146-1.285-.427-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.146-1.285.427-1.857m0 0a2 2 0 10-3.417-2.357A2 2 0 0010 9.25V9m-3 3h.01M7 12H4m0 0H2">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Pedigrees Created</p>
+                        <p class="text-3xl font-bold text-gray-900">42</p>
+                    </div>
+                    <div class="p-3 bg-green-500 rounded-full text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Transfers Made</p>
+                        <p class="text-3xl font-bold text-gray-900">8</p>
+                    </div>
+                    <div class="p-3 bg-yellow-500 rounded-full text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Races Tracked</p>
+                        <p class="text-3xl font-bold text-gray-900">15</p>
+                    </div>
+                    <div class="p-3 bg-red-500 rounded-full text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Quick Actions</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                    <button
+                        class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-colors">
+                        <svg class="w-8 h-8 text-[#87d7e6] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">Add New Pigeon</span>
+                    </button>
+                    <button
+                        class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-colors">
+                        <svg class="w-8 h-8 text-green-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">Upload Pedigree File</span>
+                    </button>
+                    <button
+                        class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-colors">
+                        <svg class="w-8 h-8 text-blue-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253">
+                            </path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">Create Pedigree Manually</span>
+                    </button>
+                    <button
+                        class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-colors">
+                        <svg class="w-8 h-8 text-purple-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">Transfer a Pigeon</span>
+                    </button>
+                    <button
+                        class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-colors">
+                        <svg class="w-8 h-8 text-orange-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                            </path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">Log Race Result</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity Feed & Active Alerts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Activity</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-green-500">●</span>
+                            <div>
+                                <p class="font-medium">New pigeon <span class="font-bold">Blue Thunder</span> added</p>
+                                <p class="text-xs text-gray-500">2 hours ago</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-blue-500">●</span>
+                            <div>
+                                <p class="font-medium">Pedigree for <span class="font-bold">Golden Sky</span> generated
+                                    via OCR</p>
+                                <p class="text-xs text-gray-500">Yesterday</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-orange-500">●</span>
+                            <div>
+                                <p class="font-medium">Race result added for <span class="font-bold">Stormflash</span> –
+                                    2nd place in Antwerp</p>
+                                <p class="text-xs text-gray-500">3 days ago</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-purple-500">●</span>
+                            <div>
+                                <p class="font-medium">Transfer request sent for <span class="font-bold">Firetail</span>
+                                    to john@email.com</p>
+                                <p class="text-xs text-gray-500">5 days ago</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Active Alerts & Quick Access</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                            <span class="font-medium text-yellow-800">Pending Transfers (1)</span>
+                            <button class="text-sm text-yellow-700 hover:underline">View</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium text-blue-800">Unfinished Pedigrees (2)</span>
+                            <button class="text-sm text-blue-700 hover:underline">Continue</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                            <span class="font-medium text-red-800">Health Alert: Medication due for "Speedy"
+                                tomorrow!</span>
+                            <button class="text-sm text-red-700 hover:underline">Action</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium text-gray-800">Deleted Pigeons Bin (30-day window)</span>
+                            <button class="text-sm text-gray-700 hover:underline">View Bin</button>
+                        </li>
+                        <li class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium text-green-800">Upcoming Event: Vaccination Drive on
+                                2025-07-10</span>
+                            <button class="text-sm text-green-700 hover:underline">Details</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Subscription Plan Overview -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Subscription Plan Overview</h3>
+                <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-8">
+                    <div>
+                        <p class="text-lg font-semibold text-gray-700">Current Plan: <span class="text-[#87d7e6]">Hobby
+                                Breeder</span></p>
+                        <p class="text-sm text-gray-500 mt-1">Usage: 54/100 pigeons used</p>
+                        <p class="text-sm text-gray-500">Trial ends in: <span class="font-bold text-red-500">3
+                                days</span></p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button
+                            class="px-6 py-2 rounded-full bg-[#87d7e6] text-white font-semibold shadow-md hover:bg-[#6ac1cd] transition-colors">
+                            Upgrade Plan
+                        </button>
+                        <button
+                            class="px-6 py-2 rounded-full bg-red-500 text-white font-semibold shadow-md hover:bg-red-600 transition-colors">
+                            Cancel Subscription
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOpenButton = document.getElementById('sidebar-open-button');
+            const sidebarCloseButton = document.getElementById('sidebar-close-button');
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+
+            // Toggle sidebar visibility on mobile
+            sidebarOpenButton.addEventListener('click', function () {
+                sidebar.classList.remove('-translate-x-full');
+            });
+
+            sidebarCloseButton.addEventListener('click', function () {
+                sidebar.classList.add('-translate-x-full');
+            });
+
+            // Toggle user menu dropdown
+            userMenuButton.addEventListener('click', function () {
+                userMenu.classList.toggle('hidden');
+            });
+
+            // Close user menu when clicking outside
+            window.addEventListener('click', function (event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
